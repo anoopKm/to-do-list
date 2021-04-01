@@ -47,7 +47,7 @@ function showtask(){
                 </div>`;
         }
         else{
-            html += `<div class="listitem row ${item.selected ? "selected" : ""}" onclick="toggleSelection(${index})">
+            html += `<div class="listitem row ${item.selected ? "selected" : ""}" onclick="toggleSelection(${index})" ondblclick="editTask(event, ${index})" >
                     <div class="index col-1" scope="row">${index+1}</div>
                     <div class="col-4">${item.taskLabel}</div>
                     <div class="col-3">${item.taskPriority}</div>
@@ -75,7 +75,6 @@ function toggleSelection(index){
         taskObj[index].selected = !taskObj[index].selected;
     }
     localStorage.setItem("alltasks", JSON.stringify(taskObj));
-    console.log(localStorage.alltasks);
     showtask();
 }
 // edittask
